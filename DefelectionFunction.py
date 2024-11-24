@@ -29,7 +29,7 @@ b = data[:, 0]
 theta = data[:, 1]
 theta_rutherford = data[:, 2]
 
-# Find the maximum potential value and its corresponding radius
+# Find the maximum angle value and its corresponding b
 max_theta = np.max(theta)
 max_b = b[np.argmax(theta)]
 print(f"Maximum angle: {max_theta:.2f} deg at paremetr of imapact: {max_b:.2f} fm")
@@ -39,11 +39,15 @@ plt.figure(figsize=(10, 6))
 plt.plot(b, theta, label="Deflection function", color = "blue")
 plt.plot(b, theta_rutherford, color='red', linestyle='--', label=f"Rutherford deflection function")
 
+# Add green dashed lines at 50 and -50 degrees
+plt.axhline(y=50, color='green', linestyle=':', linewidth=1.5)
+plt.axhline(y=-50, color='green', linestyle=':', linewidth=1.5)
+
 # Customize plot
 plt.xlabel("Impact parameter (fm)")
 plt.ylabel(r"$\Theta$ (deg)")
 plt.legend()
 plt.ylim(-130, 190) 
-plt.xlim(-2.5, 25) 
+plt.xlim(-0.5, 25) 
 plt.savefig('DeflectionPlot.pdf')
 plt.close()

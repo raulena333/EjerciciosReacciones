@@ -65,7 +65,11 @@ for theta in angles:
     print(f'For angle {theta}°:')
     print(f'b = {b:.2f} fm , r_ca = {max_acerca:.2f} fm , dsigma = {10*seccion:.2f} mb/sr\n')
 
-v = np.sqrt(2 * E_lab / (8 * muMev))
+v = np.sqrt(2 * E_lab / (muMev))
 tau_col = (a_0 / v)
 adiabaticidad = excitation / hbarc *tau_col
 print(f'Adiabatic parameter for $^8Li$ : {adiabaticidad:.3f}')
+
+B_E2 = 25  # e^2·fm^4
+seccion_eficaz = (Z_target * e2)**2 * 1 / (hbarc * v)**2 * (B_E2 / a_0**2)
+print(f"Factor is: {seccion_eficaz:.3f} fm^2 / sr")
